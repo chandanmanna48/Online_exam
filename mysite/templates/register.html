@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container" style="background-color: white;">
+
+    <div class="alert alert-warning">
+        {% for message in messages %}
+        <strong> {{message}}</strong> {% endfor %}
+    </div>
+</div>
+
+
+<div id="login-box">
+    <div class="left" style="background-image: linear-gradient(to left top,rgb(102, 245, 102),rgb(228, 24, 228));border-right:4px dashed white; color:rgb(10, 7, 7);">
+        <h1 style="margin-top: -10px;color:white;">Register</h1>
+        <form action="{% url 'signup' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="first_name" placeholder="First Name" required/>
+            <input type="text" name="last_name" placeholder="Last Name" required/>
+            <input type="email" id="email_box" name="email" placeholder="E-mail" required style="display: block;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            padding: 4px;
+            width: 220px;
+            height: 32px;" />
+            <input type="password" name="password" placeholder="Password" required/>
+            <input type="password" name="password2" placeholder="Retype password" required/>
+            <input type="text" name="regdno" placeholder="Registration no" required/>
+
+            <input type="submit" name="signup_submit" value="Sign me up" style="border: 3px solid rgb(240, 164, 164);margin-top:0px;" />
+
+        </form>
+
+    </div>
+
+    <div class="right" style="background-image: linear-gradient(to right top,rgb(103, 241, 103),rgb(204, 28, 204));">
+        <span class="loginwith">Register with<br />social network</span>
+
+        <button class="social-signin facebook"><a href="#" style="color: white;text-decoration:none; font-size:20px;">facebook</a></button>
+        <button class="social-signin twitter"><a href="#" style="color: white;text-decoration:none; font-size:20px;">Twitter</a> </button>
+        <button class="social-signin google"><a href="{% url 'social:begin' 'google-oauth2' %}?next=/" style="color: white;text-decoration:none; font-size:20px;"> Google </a></button>
+    </div>
+    <div class="or">OR</div>
+</div>
+
+
+
+{% endblock %}

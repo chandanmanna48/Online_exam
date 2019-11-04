@@ -1,0 +1,221 @@
+<!DOCTYPE html> {% load static %}
+
+
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css' %}">
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
+    <link rel="stylesheet" href="{% static 'js/test.js'%}">
+    <style>
+        #pp {
+            font-size: 20px;
+        }
+        
+        body {
+            background-color: #a2b9bc;
+            background-image: linear-gradient(to right, pink, rgb(130, 184, 247));
+        }
+        
+        .header {
+            background-color: #6b5b95;
+            height: 80px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        .footer {
+            background-color: #6b5b95;
+            height: 80px;
+            width: 100%;
+            position: absolute;
+            bottom: 5px;
+        }
+        
+        #name {
+            font-size: 30px;
+            margin-top: 2px;
+        }
+        
+        .col-md-12 {
+            font-size: 30px;
+        }
+        
+        .card-title {
+            font-weight: bold;
+        }
+        
+        .question {
+            position: relative;
+            left: 10%;
+            right: 10%;
+        }
+        /* The container */
+        
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        /* Hide the browser's default radio button */
+        
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        /* Create a custom radio button */
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+        /* On mouse-over, add a grey background color */
+        
+        .container:hover input~.checkmark {
+            background-color: #ccc;
+        }
+        /* When the radio button is checked, add a blue background */
+        
+        .container input:checked~.checkmark {
+            background-color: #2196F3;
+        }
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        /* Show the indicator (dot/circle) when checked */
+        
+        .container input:checked~.checkmark:after {
+            display: block;
+        }
+        /* Style the indicator (dot/circle) */
+        
+        .container .checkmark:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+        
+        .card-body {
+            height: 140px;
+            text-align: center;
+        }
+        
+        .card-text {
+            font-size: 27px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+    <div class="header">
+
+    </div>
+    <div class="card text-center">
+        <div class="col-md-12 ">
+            <div class="card-title">GENERAL-KNOWLEDGE ONLINE EXAMINATION</div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <aside>
+
+    </aside>
+    <div class="card bg-success text-white">
+        <div class="card-body">
+            <h1>Your score <b>:</b> <strong><b style="color:rgb(241, 211, 112);">{{count}}</b></strong> out of <b style="color:rgb(241, 211, 112);">{{total}}</b> is <b style="color:rgb(241, 211, 112);">{{percent}}</b> %</h1>
+            <h2 style="margin-top:-10px;">{{message}}</h2>
+        </div>
+
+    </div>
+    <br>
+    <form action="submit" method="POST">
+        {% csrf_token %}
+        <ol type="1">
+
+            {% for obj in objs %}
+
+            <div class="container text-center">
+                <div class="card text-center">
+                    <div class="col-md-12 ">
+                        <div class="card-text">
+                            <li style="margin-left: 25px; color:black; font-weight:italic;"> {{ obj.question}} ?</li>
+                            {% if obj.option1 == obj.answer %}
+                            <label class="container" style="color: green;font-weight:bold;">{{obj.option1}}
+                        <input type="radio"  name="{{obj.qno}}" value="{{obj.option1}}" disabled>
+                        <span class="checkmark" style="color: rgb(45, 212, 45);background-color:rgb(69, 252, 69);"></span>
+                      </label> {% else %}
+                            <label class="container">{{obj.option1}}
+                        <input type="radio"  name="{{obj.qno}}" value="{{obj.option1}}" disabled>
+                        <span class="checkmark"></span>
+                      </label> {% endif %} {% if obj.option2 == obj.answer %}
+                            <label class="container" style="color: green;font-weight:bold;">{{obj.option2}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option2}}" disabled>
+                        <span class="checkmark" style="color: green;background-color:rgb(69, 252, 69);"></span>
+                      </label> {%else%}
+                            <label class="container">{{obj.option2}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option2}}" disabled>
+                        <span class="checkmark"></span>
+                      </label> {%endif%} {% if obj.option3 == obj.answer %}
+                            <label class="container" style="color: green;font-weight:bold;">{{obj.option3}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option3}}" disabled>
+                        <span class="checkmark" style="color: green;background-color:rgb(69, 252, 69);"></span>
+                      </label> {% else %}
+                            <label class="container">{{obj.option3}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option3}}" disabled>
+                        <span class="checkmark"></span>
+                      </label> {% endif %} {% if obj.option4 == obj.answer %}
+                            <label class="container" style="color: green;font-weight:bold;">{{obj.option4}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option4}}" disabled>
+                        <span class="checkmark" style="color: green;background-color:rgb(69, 252, 69);"></span>
+                      </label> {% else %}
+                            <label class="container">{{obj.option4}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option4}}" disabled>
+                        <span class="checkmark"></span>
+                      </label> {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </ol>
+        <!--<a href="submit" class="btn btn-warning btn-lg" name="btn_submit" >Submit</a> -->
+
+    </form>
+    <div class="footer">
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+        #draft a:hover {
+            text-decoration: none;
+        }
+        
+        #draft {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark btn-lg">
+        <a class="navbar-brand" href="/">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </nav>
+    <div class="container text-center">
+        <h1 style="color: blueviolet;text-shadow:1px 1px 1px rgb(252, 46, 200);text-decoration:none;"><b><a href="{% url 'admin_page' %} " style="text-decoration: none;;">Admin Page</a></b></h1>
+        <hr>
+        <div id="draft">
+            <h3><a href="{% url 'user_draft' %}">User Draft</a></h3>
+        </div>
+
+    </div>
+</body>
+
+</html>

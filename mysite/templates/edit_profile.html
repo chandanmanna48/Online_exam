@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <div class="text-center">
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
+        <h2>{{user.regdno}}</h2>
+        <h4>{{user.email}}</h4>
+    </div>
+
+    <br>
+    <br>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="my_form">
+            {% for field in form %}
+            <div class="fieldWrapper">
+                {{field.errors}}
+                <br>
+                <p>
+                    <h2>{{field.label_tag}}</h2>{{field}}</p>
+                <br>
+            </div>
+            {% endfor %}
+
+        </div>
+        <button type="submit" class="save btn btn-outline-success btn-lg" style="border:1px solid green">Save</button>
+    </form>
+</div>
+
+
+
+{% endblock %}

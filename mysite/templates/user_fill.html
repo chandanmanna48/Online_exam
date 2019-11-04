@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>User Fill</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container" style="background-color: white;">
+
+        <div class="alert alert-warning">
+            {% for message in messages %}
+            <strong> {{message}}</strong> {% endfor %}
+        </div>
+    </div>
+    <div class="container" style="text-align: center;margin-top:100px; background-color:rgb(33, 209, 121);">
+        <p class="card-title" style="color: rgb(22, 14, 7);font-size:30px;text-shadow:2px 2px 2px rgb(231, 61, 9);font-weight:bold;">!! PLEASE FILL ALL THE REQUIRED FIELDS !!</p>
+        <br>
+        <form action="{% url 'user_data' regdno=user.regdno %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <span class="input-group-addon">Name</span>
+                <input type="text" class="form-control" name="name" value="{{user.first_name}} {{user.last_name}}" disabled>
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Email</span>
+                <input type="email" class="form-control" name="email" value="{{user.email}}" disabled>
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Regd no</span>
+                <input type="text" class="form-control" name="regdno" value="{{user.regdno}}" disabled>
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Gender </span>
+                <label class="radio-inline"><input type="radio" name="gender" value="Male" checked> Male</label>
+                <label class="radio-inline"><input type="radio" name="gender" value="Female">Female</label>
+                <label class="radio-inline"><input type="radio" name="gender" value="Others">Others</label>
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Contact no </span>
+                <input type="text" class="form-control" name="phoneno" required>
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Date Of Birth </span>
+                <input type="date" class="form-control" name="dob" required>
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Profile Image </span>
+                <input type="file" class="form-control" name="profile_image" title="It helps admin to approve you easily ">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">College Name </span>
+                <input type="text" class="form-control" name="college" value="Nalanda Institute Of Technology" required>
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Branch </span>
+                <select name="branch" required>
+                    <option value="CSE">CSE</option>
+                    <option value="MECH">MECH</option>
+                    <option value="CIVIL">CIVIL</option>
+                    <option value="EE">EE</option>
+                    <option value="EEE">EEE</option>
+                </select>
+            </div>
+            <br>
+            <br>
+            <input type="submit" value="Save" class="btn btn-primary btn-lg">
+        </form>
+    </div>
+</body>
+
+</html>

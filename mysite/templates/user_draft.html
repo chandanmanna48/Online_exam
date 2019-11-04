@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <title>
+        User_Draft
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="bg-success ">
+        <a href="/" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-home"></span> Home
+        </a>
+        <a href="{% url 'admin_page' %} " class="btn btn-lg btn-info">Admin</a>
+        <h1 class="text-center" style="text-shadow: 1px 1px 1px rgb(238, 29, 238); color:rgb(247, 213, 25);"><b>User Draft</b> </h1>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-danger">
+                <th scope="col">Profile</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Branch</th>
+                <th scope="col">Regdno</th>
+                <th scope="col">Date Of Join</th>
+                <th scope="col">Response</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for use in users %} {% if not use.is_superuser %}
+            <tr class="table-primary">
+                {% if use.profile_image %}
+                <td><img src="{{use.profile_image.url}}" alt="" height="50px" width="50px"></td>
+                {% endif %}
+                <td>{{use.first_name}} {{use.last_name}}</td>
+                <td>{{use.email}}</td>
+                <td>{{use.branch}}</td>
+                <td>{{use.regdno}}</td>
+                <td>{{use.date_of_join}}</td>
+                <td><a href="{% url 'approve' regdno=use.regdno %}" name="{{use.pk}}" class="btn btn-success">Approve</a> <a href="{% url 'delete' regdno=use.regdno %}" class="btn btn-warning">Delete</a></td>
+            </tr>
+            {% endif %} {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

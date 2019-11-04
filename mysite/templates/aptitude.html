@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container" style="text-align: center; font-weight:bold; text-shadow:2px 2px 2px tomato;font-size:40px;padding:5px;">
+    <p>Aptitude</p>
+
+</div>
+
+<div class="container" style="background-color: aliceblue; font-size:20px;text-align:center;margin-top:5px;border-top:3px solid tomato;border-top:3px solid tomato;border-bottom:5px solid tomato;">
+    An aptitude is a component of a competence to do a certain kind of work at a certain level. <br> Outstanding aptitude can be considered "talent". <br> An aptitude may be physical or mental. <br> Aptitude is inborn potential to do certain kinds of
+    work whether developed or undeveloped. <br> Ability is developed knowledge, understanding, learnt or acquired abilities (skills) or attitude. <br> The innate nature of aptitude is in contrast to skills and achievement, which represent knowledge or
+    ability that is gained through learning.
+    <br>
+    <br>
+    <p>
+        <b style="color: rgb(9, 224, 63);"><u>COURSE CONTENT</u>  :-</b>
+        <ol type="A">
+            <li> <strong> 100's </strong> of Examples and Practice Questions . </li>
+            <li>An <strong>Authenticated User </strong> can be able to give Online Based Examinations .</li>
+        </ol>
+    </p>
+</div>
+
+<br>
+<br> {% if user.is_authenticated and user.approved %}
+<div class="container" style="background-color: white;">
+    <p><a href="{% url 'sample_practice_aptitude' %}"><span class="btn btn-primary btn-lg " style="float: left; font-size:25px; box-shadow:3px 3px 3px rgb(181, 129, 250)">Sample Practice</span></a><a href="{% url 'online_test_aptitude' %}"><span class="btn btn-danger btn-lg " style="float: right; font-size:25px;box-shadow:3px 3px 3px rgb(245, 109, 227)">Online Test</span></a></p>
+</div>
+{% else %}
+<div class="container" style="background-color: white;">
+    <p><a href="{% url 'sample_practice_aptitude' %}" title="You need to Approved by the Admin First" style="pointer-events: none; cursor: default;"><span class="btn btn-primary btn-lg " style="float: left; font-size:25px; box-shadow:3px 3px 3px rgb(181, 129, 250)" 
+        >Sample Practice</span></a>
+        <a href="{% url 'online_test_aptitude' %}" title="You need to Approved by the Admin First" style="pointer-events: none; cursor: default;"><span class="btn btn-danger btn-lg " style="float: right; font-size:25px;box-shadow:3px 3px 3px rgb(245, 109, 227)" 
+            >Online Test</span></a>
+    </p>
+</div>
+{% endif %}
+<br>
+
+
+<br>
+<br> {% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% load static %}{% block content %}
+
+<div class="container text-center">
+    <div style="border-bottom: 3px dashed blue;">
+        <h1 style="font-weight: bold; text-shadow:2px 2px 2px tomato;">User Profile</h1>
+
+    </div>
+    <br> {% if user.is_authenticated and user.approved %}
+    <a href="{% url 'edit_profile' %}" class="btn btn-lg btn-warning" style="float: right; "><span class="glyphicon glyphicon-pencil"></span></a> {% endif %} {% if user.profile_image%}
+    <img src="{{user.profile_image.url}}" alt="Image" height="180px" width="180px" style="float:left; border-radius:50px;margin-left:20px;"> {% endif %}
+    <h1 style="font-family:arial;">{{user.first_name}} {{user.last_name}}</h1>
+
+    <br>
+    <br>
+    <br>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt>First Name</dt>
+        <dd>{{user.first_name}}</dd>
+
+        <dt>Last Name</dt>
+        <dd>{{user.last_name}}</dd>
+
+        <dt>Email</dt>
+        <dd>{{user.email}}</dd>
+
+        <dt>College Name</dt>
+        <dd>{{user.college_name}}</dd>
+
+        <dt>Registration No</dt>
+        <dd>{{user.regdno}}</dd>
+
+        <dt>Branch</dt>
+        <dd>{{user.branch}}</dd>
+
+        <dt>Gender</dt>
+        <dd>{{user.gender}}</dd>
+
+        <dt>Contact Number</dt>
+        <dd>{{user.phoneno}}</dd>
+
+        <dt>Date Of Birth</dt>
+        <dd>{{user.dob}}</dd>
+
+    </dl>
+
+</div>
+
+{% endblock %}
