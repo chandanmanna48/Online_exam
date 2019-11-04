@@ -84,12 +84,13 @@ body {
 
 #login-box {
     position: relative;
-    margin: 5% auto;
+    margin: 50% auto;
     width: 600px;
     height: 400px;
     background: #FFF;
     border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    color: black;
 }
 
 .left {
@@ -98,7 +99,7 @@ body {
     left: 0;
     box-sizing: border-box;
     padding: 40px;
-    width: 300px;
+    width: 600px;
     height: 400px;
 }
 
@@ -177,6 +178,8 @@ input[type="submit"]:active {
     transition: 0.1s ease;
 }
 
+
+/*
 .or {
     position: absolute;
     top: 180px;
@@ -247,6 +250,7 @@ button.social-signin.twitter {
 button.social-signin.google {
     background: #DD4B39;
 }
+*/
 
 #my_form p label,
 #my_form p input {

@@ -2,15 +2,15 @@
 
 <div class="container" style="background-color: white;">
 
-    <div class="alert alert-warning">
+    <div class="alert alert-warning" style="background-color: white;border:1px solid white;">
         {% for message in messages %}
         <strong> {{message}}</strong> {% endfor %}
     </div>
 </div>
 
 
-<div id="login-box">
-    <div class="left" style="background-image: linear-gradient(to left top,rgb(102, 245, 102),rgb(228, 24, 228));border-right:4px dashed white; color:rgb(10, 7, 7);">
+<div id="login-box" style="width: 300px;">
+    <div class="left" style="background-image: linear-gradient(to left top,rgb(102, 245, 102),rgb(228, 24, 228)); color:rgb(10, 7, 7);">
         <h1 style="margin-top: -10px;color:white;">Register</h1>
         <form action="{% url 'signup' %}" method="POST">
             {% csrf_token %}
@@ -29,17 +29,16 @@
             <input type="submit" name="signup_submit" value="Sign me up" style="border: 3px solid rgb(240, 164, 164);margin-top:0px;" />
 
         </form>
-
     </div>
 
-    <div class="right" style="background-image: linear-gradient(to right top,rgb(103, 241, 103),rgb(204, 28, 204));">
+    <!--  <div class="right" style="background-image: linear-gradient(to right top,rgb(103, 241, 103),rgb(204, 28, 204));">
         <span class="loginwith">Register with<br />social network</span>
 
         <button class="social-signin facebook"><a href="#" style="color: white;text-decoration:none; font-size:20px;">facebook</a></button>
         <button class="social-signin twitter"><a href="#" style="color: white;text-decoration:none; font-size:20px;">Twitter</a> </button>
         <button class="social-signin google"><a href="{% url 'social:begin' 'google-oauth2' %}?next=/" style="color: white;text-decoration:none; font-size:20px;"> Google </a></button>
     </div>
-    <div class="or">OR</div>
+    <div class="or">OR</div> -->
 </div>
 
 
