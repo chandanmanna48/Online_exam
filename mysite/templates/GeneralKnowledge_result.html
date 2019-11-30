@@ -36,8 +36,10 @@
             background-color: #6b5b95;
             height: 80px;
             width: 100%;
-            position: absolute;
+            position: relative;
             bottom: 5px;
+            top: 100%;
+            padding: 10px;
         }
         
         #name {
@@ -168,34 +170,66 @@
                     <div class="col-md-12 ">
                         <div class="card-text">
                             <li style="margin-left: 25px; color:black; font-weight:italic;"> {{ obj.question}} ?</li>
-                            {% if obj.option1 == obj.answer %}
+                            {% if obj.option1 == obj.answer and obj.option1 == obj.user_select %}
                             <label class="container" style="color: green;font-weight:bold;">{{obj.option1}}
+                        <input type="radio"  name="{{obj.qno}}" value="{{obj.option1}}" disabled>
+                        <span class="checkmark" style="color: rgb(45, 212, 45);background-color:rgb(69, 252, 69);"></span>
+                      </label> {% elif obj.option1 != obj.answer and obj.option1 == obj.user_select %}
+                            <label class="container" style="color: rgb(243, 74, 44);font-weight:bold;">{{obj.option1}}
+                        <input type="radio"  name="{{obj.qno}}" value="{{obj.option1}}" disabled>
+                        <span class="checkmark" style="color: rgb(243, 74, 44);background-color:rgb(243, 74, 44);"></span>
+                      </label> {% elif obj.option1 == obj.answer and obj.option1 != obj.user_select %}
+                            <label class="container" style="color: rgb(45, 212, 45);font-weight:bold;">{{obj.option1}}
                         <input type="radio"  name="{{obj.qno}}" value="{{obj.option1}}" disabled>
                         <span class="checkmark" style="color: rgb(45, 212, 45);background-color:rgb(69, 252, 69);"></span>
                       </label> {% else %}
                             <label class="container">{{obj.option1}}
                         <input type="radio"  name="{{obj.qno}}" value="{{obj.option1}}" disabled>
                         <span class="checkmark"></span>
-                      </label> {% endif %} {% if obj.option2 == obj.answer %}
+                      </label> {% endif %} {% if obj.option2 == obj.answer and obj.option2 == obj.user_select %}
                             <label class="container" style="color: green;font-weight:bold;">{{obj.option2}}
                         <input type="radio" name="{{obj.qno}}" value="{{obj.option2}}" disabled>
                         <span class="checkmark" style="color: green;background-color:rgb(69, 252, 69);"></span>
-                      </label> {%else%}
+                        </label> {% elif obj.option2 != obj.answer and obj.option2 == obj.user_select %}
+                            <label class="container" style="color: rgb(243, 74, 44);font-weight:bold;">{{obj.option2}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option2}}" disabled>
+                        <span class="checkmark" style="color: rgb(243, 74, 44);background-color:rgb(243, 74, 44);"></span>
+                        </label> {% elif obj.option2 == obj.answer and obj.option2 != obj.user_select %}
+                            <label class="container" style="color: green;font-weight:bold;">{{obj.option2}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option2}}" disabled>
+                        <span class="checkmark" style="color: green;background-color:green;"></span>
+                        </label> {%else%}
                             <label class="container">{{obj.option2}}
                         <input type="radio" name="{{obj.qno}}" value="{{obj.option2}}" disabled>
                         <span class="checkmark"></span>
-                      </label> {%endif%} {% if obj.option3 == obj.answer %}
+                      </label> {%endif%} {% if obj.option3 == obj.answer and obj.option3 == obj.user_select %}
                             <label class="container" style="color: green;font-weight:bold;">{{obj.option3}}
                         <input type="radio" name="{{obj.qno}}" value="{{obj.option3}}" disabled>
                         <span class="checkmark" style="color: green;background-color:rgb(69, 252, 69);"></span>
+                      </label> {% elif obj.option3 == obj.answer and obj.option3 != obj.user_select %}
+                            <label class="container" style="color: green;font-weight:bold;">{{obj.option3}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option3}}" disabled>
+                        <span class="checkmark" style="color: green;background-color:rgb(69, 252, 69);"></span>
+                      </label> {% elif obj.option3 != obj.answer and obj.option3 == obj.user_select %}
+                            <label class="container" style="color: rgb(243, 74, 44);font-weight:bold;">{{obj.option3}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option3}}" disabled>
+                        <span class="checkmark" style="color: rgb(243, 74, 44);background-color:rgb(243, 74, 44);"></span>
                       </label> {% else %}
                             <label class="container">{{obj.option3}}
                         <input type="radio" name="{{obj.qno}}" value="{{obj.option3}}" disabled>
                         <span class="checkmark"></span>
-                      </label> {% endif %} {% if obj.option4 == obj.answer %}
+                      </label> {% endif %} {% if obj.option4 == obj.answer and obj.option4 == obj.user_select %}
                             <label class="container" style="color: green;font-weight:bold;">{{obj.option4}}
                         <input type="radio" name="{{obj.qno}}" value="{{obj.option4}}" disabled>
                         <span class="checkmark" style="color: green;background-color:rgb(69, 252, 69);"></span>
+                      </label> {% elif obj.option4 == obj.answer and obj.option4 != obj.user_select %}
+                            <label class="container" style="color: green;font-weight:bold;">{{obj.option4}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option4}}" disabled>
+                        <span class="checkmark" style="color: green;background-color:rgb(69, 252, 69);"></span>
+                      </label> {% elif obj.option4 != obj.answer and obj.option4 == obj.user_select %}
+                            <label class="container" style="color: rgb(243, 74, 44);font-weight:bold;">{{obj.option4}}
+                        <input type="radio" name="{{obj.qno}}" value="{{obj.option4}}" disabled>
+                        <span class="checkmark" style="color: rgb(243, 74, 44);background-color:rgb(243, 74, 44);"></span>
                       </label> {% else %}
                             <label class="container">{{obj.option4}}
                         <input type="radio" name="{{obj.qno}}" value="{{obj.option4}}" disabled>

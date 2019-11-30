@@ -7,8 +7,8 @@
     </div>
 </div>
 <div id="login-box" style="width: 300px;">
-    <div class="left" style="background-image: linear-gradient(to left top,rgb(102, 245, 102),rgb(228, 24, 228)); color:white;">
-        <h1 style="margin-top: 50px;">Sign in</h1>
+    <div class="left" style="background-image: linear-gradient(to left top,rgb(102, 245, 102),rgb(228, 24, 228)); color:rgb(10, 9, 9);">
+        <h1 style="margin-top: 50px;color:white;">Sign in</h1>
         <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
             <input type="text" name="email" placeholder="E-mail" required/>

@@ -87,16 +87,31 @@ def user_data(request,regdno):
         gender = request.POST['gender']
         phoneno = request.POST['phoneno']
         dob = request.POST['dob']
-        profile_image = request.POST['profile_image']
+       # profile_image = request.FILES['profile_image']
         college = request.POST['college']
         branch = request.POST['branch']
+
+      #  form = ProfileForm(request.POST,request.FILES)
+      #  if form.is_valid():
+      #      img = Student(profile_image=request.FILES['image'])
+      #      img.save()
 
         request.user.gender = gender
         request.user.phoneno = phoneno
         request.user.dob = dob
-        request.user.profile_image = profile_image
+       # request.user.profile_image = request.FILES['profile_image']
         request.user.college = college
         request.user.branch = branch
+
+
+        form = UserForm(request.POST, request.FILES or None,instance = request.user)
+        if form.is_valid():
+            img = UserForm(profile_image=request.FILES['profile_image'])
+           # return redirect('profile')
+           # return redirect('profile')
+        else:
+            form = UserForm(instance = request.user)
+
         request.user.save()
 
         '''MyProfileForm = ProfileForm(request.POST,request.FILES)

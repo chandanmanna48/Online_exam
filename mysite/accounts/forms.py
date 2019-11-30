@@ -10,4 +10,4 @@ class UserForm(forms.ModelForm):
 
 
 class ProfileForm(forms.Form):
-    image = forms.ImageField()
+    image = forms.FileField()
